@@ -1,0 +1,59 @@
+
+<form [formGroup]="formGroup">
+    <div class="row">
+        <div class="col-6">
+            <p-floatLabel>
+                <input pInputText class="fw" [(ngModel)]="user.userName"
+                formControlName="name" pKeyFilter="alpha" [required]="true"/>
+                <label for="name">Nombre</label>
+            </p-floatLabel>
+        </div>    
+        <div class="col-6">
+            <p-floatLabel>
+                <input pInputText class="fw" [(ngModel)]="user.userLastName"
+                formControlName="lastname" pKeyFilter="alpha" [required]="true"/>
+                <label for="lastname">Apellido</label>
+            </p-floatLabel>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p-floatLabel>
+                <input pInputText class="fw" [(ngModel)]="user.userId"
+                formControlName="dni" pKeyFilter="int" [required]="true"/>
+                <label for="DNI">DNI</label>
+            </p-floatLabel>
+        </div>
+        <div class="col-6">
+            <p-floatLabel>
+                <p-calendar class="fw" [(ngModel)]="user.birthDate"
+                    formControlName="birthDate"
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [required]="true"/>
+                <label>Fecha de Nacimiento:</label>
+            </p-floatLabel>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p-floatLabel>
+                <p-inputMask class="fw" [(ngModel)]="user.userPhone"
+                mask="999-999-999" placeholder="999-999-999"
+                formControlName="phone" [required]="true"/>
+                <label for="phone">Teléfono</label>
+            </p-floatLabel>
+        </div> 
+        <div class="col-6">
+            <p-floatLabel>
+                <input pInputText class="fw" [(ngModel)]="user.userEmail"
+                formControlName="email" [required]="true"/>
+                <label for="email">E-mail</label>
+            </p-floatLabel>
+        </div>
+    </div>
+    <div class="flex pt-4 justify-content-between">
+        <p-button label="Cambiar de asiento" icon="pi pi-arrow-left" (click)="validateForm(0)" />
+        <p-button label="Revisa la orden" icon="pi pi-arrow-right" iconPos="right" (click)="validateForm(2)"/>
+    </div>
+</form>

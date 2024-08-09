@@ -1,0 +1,66 @@
+<p-card class="justify-content flex">
+    <div class="flex">
+        <form [formGroup]="formGroup" class="flex">
+            <p-floatLabel>
+                <p-autoComplete 
+                    formControlName="selectedOrigin"
+                    [suggestions]="filteredLocations" 
+                    field="locount"
+                    (completeMethod)="filterLocations($event)"
+                    [required]="true"
+                    [forceSelection]="true"/>
+                <label for="originLocation">Origen</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                <p-autoComplete 
+                    formControlName="selectedFinal"
+                    [suggestions]="filteredLocations"
+                    field="locount"
+                    (completeMethod)="filterLocations($event)"
+                    [required]="true"
+                    [forceSelection]="true"/>
+                <label for="finalLocation">Destino</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                <p-calendar 
+                    formControlName="selectedDate"
+                    [minDate]="minimumDate" 
+                    [readonlyInput]="true" 
+                    dateFormat="dd/mm/yy"
+                    [required]="true"/>
+                <label for="range">Escoja el rango de fechas</label>
+            </p-floatLabel>
+            <p-button label="Cotizar" (click)="getFlightRoutes()"/>
+        </form>
+    </div>
+</p-card>
+<p-card class="justify-content flex mt-24">
+    <p-dataView [value]="flightRoutes">
+        <ng-template pTemplate="list" let-flightRoutes>
+            <div class="flightItem" *ngFor="let item of flightRoutes; let first = first">
+                <div class="row mb-12">
+                    <div class="col-5">
+                        <div class="h5">Hora de vuelo:</div>
+                        <div class="h1">
+                            {{ item.flightDate | date : 'shortTime' }}
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="">
+                            <span class="">{{ item.originName }}</span>
+                            <i class="pi pi-arrow-right"> </i>
+                            <span class="">{{ item.finalName }}</span>
+                        </div>
+                    </div>
+                    <div class="col-4 right-text">
+                        <div class="h3 mb-12">{{ 'Precio: S/.' + item.price }}</div>
+                    </div>
+                </div>
+                <div class="right-text">
+                    <p-button icon="pi pi-shopping-cart" [raised]="true" 
+                    label="Escoger asiento" (click)="selectFlight(item)"/>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</p-card>
