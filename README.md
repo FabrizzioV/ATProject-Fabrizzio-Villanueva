@@ -1,4 +1,4 @@
-![Screenshot 2024-08-10 at 23-26-30 AT Flights](https://github.com/user-attachments/assets/10c22c3a-c997-4344-8b2b-48dfc3232677)![imagen](https://github.com/user-attachments/assets/17a5d52d-b7ec-46c2-987e-19359ac680fc)# ATProject-Fabrizzio-Villanueva
+# ATProject-Fabrizzio-Villanueva
 
 Ante todo buenas tardes, escribo este Readme para que quede como constancia de las justificaciones de este proyecto.
 
@@ -16,6 +16,8 @@ Ante todo buenas tardes, escribo este Readme para que quede como constancia de l
   
 Adicionalmente: adjunto pantallazos de lo que se puede observar en el aplicativo:
 
+![Screenshot 2024-08-10 at 23-26-30 AT Flights](https://github.com/user-attachments/assets/10c22c3a-c997-4344-8b2b-48dfc3232677)
+![imagen](https://github.com/user-attachments/assets/17a5d52d-b7ec-46c2-987e-19359ac680fc)
 ![imagen](https://github.com/user-attachments/assets/8cb5d7ed-2dab-48d0-b5a0-b6713f911fc3)
 ![imagen](https://github.com/user-attachments/assets/2e8a80f7-6361-43e5-a155-dfd08daf453f)
 ![imagen](https://github.com/user-attachments/assets/73164a63-b709-4c75-bd8f-a5651500406c)
