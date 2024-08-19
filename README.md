@@ -16,13 +16,14 @@ Ante todo buenas tardes, escribo este Readme para que quede como constancia de l
   
 Adicionalmente: adjunto pantallazos de lo que se puede observar en el aplicativo:
 
-![imagen](https://github.com/user-attachments/assets/8cb5d7ed-2dab-48d0-b5a0-b6713f911fc3)
-![imagen](https://github.com/user-attachments/assets/2e8a80f7-6361-43e5-a155-dfd08daf453f)
-![imagen](https://github.com/user-attachments/assets/73164a63-b709-4c75-bd8f-a5651500406c)
-![Screenshot 2024-08-10 at 23-26-30 AT Flights](https://github.com/user-attachments/assets/3278ff68-f1ce-426d-a3aa-4f16093aba66)
-![imagen](https://github.com/user-attachments/assets/7d787155-ec8d-40ef-b4bf-92bd5e85cac9)
-![imagen](https://github.com/user-attachments/assets/081d6811-bfa7-40ee-a1ca-43a345791f69)
-![imagen](https://github.com/user-attachments/assets/f98d61fc-7cb6-40af-8c47-6c3ab86d69ae)
-![imagen](https://github.com/user-attachments/assets/ba0eb4da-1058-454a-9087-87c4cfaad36d)
-![imagen](https://github.com/user-attachments/assets/0ae315f6-df5a-4aa3-8731-f18e7733f2a4)
-![imagen](https://github.com/user-attachments/assets/681f81aa-bcd9-4c6e-9965-c45cc054b485)
+![imagen](https://github.com/user-attachments/assets/922b1118-65d4-48e9-9490-0e9ada01be62)
+![imagen](https://github.com/user-attachments/assets/c996683c-cd7f-49ff-8f1a-db85da057e6a)}
+![imagen](https://github.com/user-attachments/assets/74eaf67c-408e-41c7-a133-856f3147123f)
+![imagen](https://github.com/user-attachments/assets/04ec6de5-03e2-4ed1-a82b-5f0b0b920014)
+![imagen](https://github.com/user-attachments/assets/0bcbfe6c-04ee-4c7b-bb44-d8d80f8c0ddd)
+![imagen](https://github.com/user-attachments/assets/6e000542-24e1-4992-af0a-3293333f2731)
+![imagen](https://github.com/user-attachments/assets/89c54c9f-22ac-407a-b045-83f8c74092d0)
+![imagen](https://github.com/user-attachments/assets/28bd5385-044a-4d3c-bebf-921c5a2b3a59)
+![imagen](https://github.com/user-attachments/assets/277a004f-297f-41a8-afad-18112912f86a)
+![imagen](https://github.com/user-attachments/assets/2a8d0955-f131-49bf-b6bd-6e02ca326128)
+![imagen](https://github.com/user-attachments/assets/42170bba-cf8d-4de7-ac2b-fd3f27a78ac5)
