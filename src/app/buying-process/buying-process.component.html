@@ -1,13 +1,13 @@
 <div class="flex justify-content" *ngIf="loading">
     <p-progressSpinner ariaLabel="loading"/>
 </div>
-<div class="" *ngIf="!loading">
-    <p-card class="justify-content flex">
+<div class="bg-img" *ngIf="!loading">
+    <p-card class="justify-content flex header" *ngIf="!flightTicket">
         <div class="container">
             <div class="row">
                 <div class="col-5">
                     <div class="h1">
-                        Proceso de compra
+                        Reserva tu vuelo
                     </div>
                 </div>
                 <div class="col-4">
@@ -17,16 +17,19 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="">
-                        <span class="">{{ flightData.originName }}</span>
+                    <div class="h4">
+                        {{ flightData.flightRouteCode }}
+                    </div>
+                    <div class="code-div">
+                        <span class="o-text">{{ flightData.originName }}</span>
                         <i class="pi pi-arrow-right"> </i>
-                        <span class="">{{ flightData.finalName }}</span>
+                        <span class="f-text">{{ flightData.finalName }}</span>
                     </div>
                 </div>
             </div>
         </div>
     </p-card>
-    <p-card class="justify-content flex">
+    <p-card class="justify-content flex" *ngIf="!flightTicket">
         <div class="container">
             <p-stepper [(activeStep)]="active" [linear]="true">
                 <p-stepperPanel header="Escoge tu asiento(s)">
@@ -35,7 +38,7 @@
                         <p-toast />
                     </ng-template>
                 </p-stepperPanel>
-                <p-stepperPanel header="Revisa la orden">
+                <p-stepperPanel header="Ingresa tus datos personales">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
                         <app-user-form [userEntered]="user" (userEvent)="getUser($event)"></app-user-form>
                         <p-toast />
@@ -43,41 +46,72 @@
                 </p-stepperPanel>
                 <p-stepperPanel header="Revisa tu vuelo">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
-                        <div class="h3"><b>Resumen de la reserva</b></div>
-                        <div class="row">
+                        <div class="checkout-header h1"><b>Resumen de la reserva</b></div>
+                        <div class="row mt-24">
                             <div class="col-6">
-                                <div class="h4"><b>Nombre completo:</b> {{ user.userName }} {{ user.userLastName }}</div>
-                                <div class="h4"><b>Correo:</b> {{ user.userEmail }}</div>
-                                <div class="h4"><b>Teléfono</b> {{ user.userPhone }}</div>
+                                <div class="h2"><b>Datos personales</b></div>
+                                <div class="h4"><b>Nombre completo:</b> 
+                                    <br>
+                                    {{ user.userName }} {{ user.userLastName }}</div>
+                                <div class="h4"><b>Correo:</b> 
+                                    <br>
+                                    {{ user.userEmail }}</div>
+                                <div class="h4"><b>Teléfono</b>
+                                    <br>
+                                    {{ user.userPhone }}</div>
                             </div>
                             <div class="col-6">
-                                <div class="h4"><b>Hora de vuelo:</b> {{ flightData.flightDate | date : 'shortTime' }}</div>
-                                <div class="h4"><b>Asiento:</b> {{ ticket.seatId }}</div>
-                                <div class="h4"><b>Código de vuelo:</b> {{ this.flightData.flightRouteCode }}</div>
-                                <div class="h4"><b>Hora de embarque:</b> {{ this.flightData.flightTime | date : 'shortTime'}}</div>
+                                <div class="h2"><b>Datos del vuelo</b></div>
+                                <div class="h4"><b>Hora de vuelo:</b>
+                                    <br>
+                                    {{ flightData.flightDate | date : 'shortTime' }}</div>
+                                <div class="h4"><b>Asiento:</b> 
+                                    <br>
+                                    {{ ticket.seatId }}</div>
+                                <div class="h4"><b>Código de vuelo:</b> 
+                                    <br>
+                                    {{ this.flightData.flightRouteCode }}</div>
+                                <div class="h4"><b>Hora de embarque:</b> 
+                                    <br>
+                                    {{ this.flightData.flightTime | date : 'shortTime'}}</div>
                             </div>
                         </div>
                         <div class="flex pt-4 justify-content-between">
                             <p-button label="Regresar" icon="pi pi-arrow-left" (onClick)="prevCallback.emit()" />
                             <p-button label="Pagar" icon="pi pi-arrow-right" iconPos="right" (click)="openPayment()"/>
                         </div>
+                        <p-toast />
                     </ng-template>
                 </p-stepperPanel>
             </p-stepper>
         </div>
     </p-card>
-
+    <p-card class="justify-content flex" *ngIf="flightTicket">
+        <div class="h1 checkout-header">
+            ¡Haz reservado ya tu vuelo!
+        </div>
+        <div class="h3">
+            El número de tu ticket es: {{flightTicket.ticketId}}
+        </div>
+        <div class="h4">
+            Preparate para tu nueva aventura y ten en cuenta las recomendaciones en vuelos
+        </div>
+        <div class="h5">
+            Puedes ver el estado de tu ticket aquí
+        </div>
+        <p-button label="Consultar Ticket" routerLink="/consulta"/>
+    </p-card>
 </div>
 
 <p-dialog header="Selecciona el método de pago" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3 mb-24">
         <div class="flex align-items-center" *ngFor="let item of paymentMethods">
             <p-radioButton 
                 name="item.paymentMethodName" 
                 [value]="item" 
                 inputId="item.paymentMethodId"
                 [(ngModel)]="selectedMethod" />
-            <label for="{{item.paymentMethodId}}" class="ml-2">
+            <label for="{{item.paymentMethodId}}" class="ml-12">
                 {{item.paymentMethodName}}
             </label>
         </div>

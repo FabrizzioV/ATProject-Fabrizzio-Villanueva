@@ -1,0 +1,85 @@
+// ::ng-deep .p-button.p-button-link
+//     color: red
+//     .p-button-label
+//       &::before
+//         transform: scaleX(0)
+//         transition: transform 0.3s ease
+//     &:hover
+//       .p-button-label
+//         &::before
+//           transform: scaleX(1)
+
+$primary: red
+
+::ng-deep .p-button
+  background-color: red
+  border: unset
+  border-radius: 8px
+
+::ng-deep .p-button:focus
+  box-shadow: none
+
+::ng-deep .p-button.p-button-link
+  background-color: unset
+
+::ng-deep .p-button.p-button-link .p-button-label
+  text-decoration: none
+  color: red
+
+::ng-deep .p-dialog-header-close-icon
+  color: white
+
+::ng-deep .p-button.p-button-link .p-button-label::before
+  content: ""
+  position: absolute
+  display: block
+  width: 100%
+  height: 2px
+  bottom: 0
+  left: 0
+  right: 0
+  background-color: red
+  transform: scaleX(0)
+  transition: transform 0.3s ease
+
+::ng-deep .p-button.p-button-link:hover .p-button-label:before
+  transform: scaleX(1)
+
+::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button
+  background-color: red
+
+/* Slide in */
+// ::ng-deep .p-button.p-button-link:nth-child(2) .p-button-label 
+//     overflow: hidden
+
+// ::ng-deep .p-button.p-button-link:nth-child(2) .p-button-label::after 
+//   opacity: 1
+//   transform: translate3d(-100%, 0, 0)
+
+// ::ng-deep .p-button.p-button-link:nth-child(2) .p-button-label:hover::after,
+// .p-button.p-button-link:nth-child(2) .p-button-label:focus::after
+//   transform: translate3d(0, 0, 0)
+
+::ng-deep .p-carousel-next
+  position: absolute
+  right: 0
+
+::ng-deep .p-carousel-prev
+  position: absolute
+  z-index: 9999
+  left: 0
+
+::ng-deep .p-stepper-separator
+  background-color: $primary
+
+::ng-deep .p-stepper-number
+  color: $primary
+
+::ng-deep  .p-toast-top-right
+  right: 30em
+
+$layout-breakpoint-small: 960px
+
+@media (min-width:$layout-breakpoint-small) 
+  ::ng-deep .p-carousel-container
+    height: 360px

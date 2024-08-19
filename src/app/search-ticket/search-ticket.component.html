@@ -1,204 +1,213 @@
-<p-card class="justify-content flex">
-    <div class="flex search">
-        <p-floatLabel>
-            <input pInputText [(ngModel)]="id"/>
-            <label for="username">Código de ticket</label>
-        </p-floatLabel>
-        <p-button label="Consultar" (click)="getTicket(id)"/>
-    </div>
-</p-card>
-<div class="flex justify-content" *ngIf="loading">
-    <p-progressSpinner ariaLabel="loading"/>
-</div>
-<ng-container *ngIf="!loading && flightTicket">
-    <div id="printdiv">
-        <div class="flex justify-content mt-24">
-            <p-card class="face-ticket">
-                <ng-template pTemplate="header">
-                    <div class="ticket-header flex">
-                        <div class="flex">
-                            <img class="ticket-icon mr20" width="20px" height="20px" 
-                            src="https://www.svgrepo.com/show/95753/airplane.svg"/>
-                            <div>
-                                ATFlights
+<div class="bg-image">
+    <p-card class="card-container flex justify-content">
+        <div class="justify-content text-center">
+            <div class="h1">
+                Conoce el estado de tu vuelo
+            </div>
+            <div class="h4">
+                Ingresa el código de tu ticket, que se encuentra en tu boleto.
+            </div>
+        </div>
+        <p-card class="justify-content flex mt-24">
+            <div class="flex search">
+                <p-floatLabel>
+                    <input pInputText [(ngModel)]="id"/>
+                    <label for="username">Código de ticket</label>
+                </p-floatLabel>
+                <p-button label="Consultar" (click)="getTicket(id)"/>
+            </div>
+        </p-card>
+        <div class="flex justify-content" *ngIf="loading">
+            <p-progressSpinner ariaLabel="loading"/>
+        </div>
+        <ng-container *ngIf="!loading && flightTicket">
+            <div id="printdiv">
+                <div class="flex justify-content mt-24">
+                    <p-card class="face-ticket">
+                        <ng-template pTemplate="header">
+                            <div class="ticket-header flex">
+                                <div class="flex">
+                                    <img class="ticket-icon mr20" width="20px" height="20px" 
+                                    src="https://www.svgrepo.com/show/95753/airplane.svg"/>
+                                    <div>
+                                        ATFlights
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <div class="row">
+                            <div class="col-5">
+                                <div>
+                                    <div><i class="pi pi-user"></i>Nombre del pasajero</div>
+                                    <input 
+                                        type="text" 
+                                        pInputText disabled
+                                        [(ngModel)]="flightTicket.userfullname" 
+                                        variant="filled" />
+                                </div>
+                                <div>
+                                    <div><i class="pi pi-sign-out"></i>De</div>
+                                    <input 
+                                        type="text" 
+                                        pInputText disabled
+                                        [(ngModel)]="flightTicket.countryoriginname" 
+                                        variant="filled" />
+                                </div>
+                                <div>
+                                    <div><i class="pi pi-sign-in"></i>Hasta</div>
+                                    <input 
+                                        type="text" 
+                                        pInputText disabled
+                                        [(ngModel)]="flightTicket.countryfinalname" 
+                                        variant="filled" />
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div>
+                                    <div>Fecha de vuelo</div>
+                                    <p-floatLabel id="float">
+                                        <input 
+                                            type="text" 
+                                            pInputText disabled
+                                            variant="filled" />
+                                        <label>{{flightTicket.flightdate | date: "dd/MM/yyyy"}}</label>
+                                    </p-floatLabel>
+                                </div>
+                                <div>
+                                    <div>Hora de vuelo</div>
+                                    <p-floatLabel id="float">
+                                        <input 
+                                            type="text" 
+                                            pInputText disabled
+                                            variant="filled" />
+                                        <label>{{ flightTicket.flightdate | date : 'shortTime' }}</label>
+                                    </p-floatLabel>
+                                </div> 
+                                <div class="row pd-bd mt-24 center">
+                                    <div class="col-4 td">
+                                        <div>Vuelo</div>
+                                        <div>{{flightTicket.flightroutecode}}</div>
+                                    </div>
+                                    <div class="col-4 td-c">
+                                        <div>Puerta</div>
+                                        <div>{{flightTicket.gateid}}</div>
+                                    </div>
+                                    <div class="col-4 td">
+                                        <div>Asiento</div>
+                                        <div>{{flightTicket.seatid}}</div>
+                                    </div>
+                                </div>                   
+                            </div>
+                            <div class="col-2">
+                                <img class="fw"
+                                src="https://user-images.githubusercontent.com/3805561/168405007-313fa4a8-1fa5-4ba4-8b4a-2ef896401fab.jpg">
                             </div>
                         </div>
-                    </div>
-                </ng-template>
-                <div class="row">
-                    <div class="col-5">
-                        <div>
-                            <div><i class="pi pi-user"></i>Nombre del pasajero</div>
-                            <input 
+                    </p-card>
+                    <p-card class="face-ticket-sm full-h">
+                        <ng-template pTemplate="header">
+                            <div class="ticket-header right-text">
+                                Tarjeta de embarque
+                            </div>
+                        </ng-template>
+                        <div class="flex">
+                            <div class="flex middle">
+                                <i class="pi pi-user middle"></i>Pasajero
+                            </div>
+                            <div><input 
                                 type="text" 
                                 pInputText disabled
                                 [(ngModel)]="flightTicket.userfullname" 
-                                variant="filled" />
+                                variant="filled" /></div>
                         </div>
-                        <div>
-                            <div><i class="pi pi-sign-out"></i>De</div>
-                            <input 
+                        <div class="flex">
+                            <div class="flex middle">
+                                <i class="pi pi-sign-out middle"></i>De
+                            </div>
+                            <div><input 
                                 type="text" 
                                 pInputText disabled
                                 [(ngModel)]="flightTicket.countryoriginname" 
-                                variant="filled" />
+                                variant="filled" /></div>
                         </div>
-                        <div>
-                            <div><i class="pi pi-sign-in"></i>Hasta</div>
-                            <input 
+                        <div class="flex">
+                            <div class="flex middle">
+                                <i class="pi pi-sign-in middle"></i>Hasta
+                            </div>
+                            <div><input 
                                 type="text" 
                                 pInputText disabled
                                 [(ngModel)]="flightTicket.countryfinalname" 
-                                variant="filled" />
+                                variant="filled" /></div>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <div>
-                            <div>Fecha de vuelo</div>
-                            <p-floatLabel id="float">
-                                <input 
-                                    type="text" 
-                                    pInputText disabled
-                                    variant="filled" />
-                                <label>{{flightTicket.flightdate | date: "dd/MM/yyyy"}}</label>
-                            </p-floatLabel>
-                        </div>
-                        <div>
-                            <div>Hora de vuelo</div>
-                            <p-floatLabel id="float">
-                                <input 
-                                    type="text" 
-                                    pInputText disabled
-                                    variant="filled" />
-                                <label>{{ flightTicket.flightdate | date : 'shortTime' }}</label>
-                            </p-floatLabel>
-                        </div> 
-                        <div class="row pd-bd mt-24 center">
-                            <div class="col-4 td">
-                                <div>Vuelo</div>
-                                <div>{{flightTicket.flightroutecode}}</div>
+                        <div class="row mt-24 ftsm-t">
+                            <div class="col-4">
+                                <div class="ftsm-st">
+                                    Vuelo
+                                </div>
+                                <div>
+                                    {{flightTicket.flightroutecode}}
+                                </div>
                             </div>
-                            <div class="col-4 td-c">
-                                <div>Puerta</div>
-                                <div>{{flightTicket.gateid}}</div>
+                            <div class="col-8">
+                                <div class="flex flight-codes">
+                                    <div class="">{{ flightTicket.origincode }}</div>
+                                    <i class="pi flex pi-arrow-right"> </i>
+                                    <div class="">{{ flightTicket.finalcode }}</div>
+                                </div>
                             </div>
-                            <div class="col-4 td">
-                                <div>Asiento</div>
-                                <div>{{flightTicket.seatid}}</div>
-                            </div>
-                        </div>                   
-                    </div>
-                    <div class="col-2">
-                        <img class="fw"
-                         src="https://user-images.githubusercontent.com/3805561/168405007-313fa4a8-1fa5-4ba4-8b4a-2ef896401fab.jpg">
-                    </div>
-                </div>
-            </p-card>
-            <p-card class="face-ticket-sm full-h">
-                <ng-template pTemplate="header">
-                    <div class="ticket-header right-text">
-                        Tarjeta de embarque
-                    </div>
-                </ng-template>
-                <div class="flex">
-                    <div class="flex middle">
-                        <i class="pi pi-user middle"></i>Pasajero
-                    </div>
-                    <div><input 
-                        type="text" 
-                        pInputText disabled
-                        [(ngModel)]="flightTicket.userfullname" 
-                        variant="filled" /></div>
-                </div>
-                <div class="flex">
-                    <div class="flex middle">
-                        <i class="pi pi-sign-out middle"></i>De
-                    </div>
-                    <div><input 
-                        type="text" 
-                        pInputText disabled
-                        [(ngModel)]="flightTicket.countryoriginname" 
-                        variant="filled" /></div>
-                </div>
-                <div class="flex">
-                    <div class="flex middle">
-                        <i class="pi pi-sign-in middle"></i>Hasta
-                    </div>
-                    <div><input 
-                        type="text" 
-                        pInputText disabled
-                        [(ngModel)]="flightTicket.countryfinalname" 
-                        variant="filled" /></div>
-                </div>
-                <div class="row mt-24 ftsm-t">
-                    <div class="col-4">
-                        <div class="ftsm-st">
-                            Vuelo
                         </div>
-                        <div>
-                            {{flightTicket.flightroutecode}}
+                        <div class="flex justify-content mt-24">
+                            <img class="ticket-icon mr20" width="20px" height="20px" 
+                            src="https://www.svgrepo.com/show/95753/airplane.svg"/>
                         </div>
-                    </div>
-                    <div class="col-8">
-                        <div class="flex flight-codes">
-                            <div class="">{{ flightTicket.origincode }}</div>
-                            <i class="pi flex pi-arrow-right"> </i>
-                            <div class="">{{ flightTicket.finalcode }}</div>
-                        </div>
-                    </div>
+                    </p-card>
                 </div>
                 <div class="flex justify-content mt-24">
-                    <img class="ticket-icon mr20" width="20px" height="20px" 
-                    src="https://www.svgrepo.com/show/95753/airplane.svg"/>
+                    <p-card class="flex  full-h back-ticket" >
+                        <div class="row">
+                            <div class="col-6">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                            <div class="col-6">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                        </div>
+                    </p-card>
+                    <p-card class="flex full-h back-ticket-sm" >
+                        <div class="row">
+                            <div class="col-6"><i class="pi pi-user"></i>Vuelo</div>
+                            <div class="col-6">{{flightTicket.flightroutecode}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><i class="pi pi-sign-out"></i>Puerta</div>
+                            <div class="col-6">{{flightTicket.gateid}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><i class="pi pi-sign-in"></i>Asiento</div>
+                            <div class="col-6">{{flightTicket.seatid}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"><i class="pi pi-sign-in"></i>Clase</div>
+                            <div class="col-6">A</div>
+                        </div>
+                        <div class="flex justify-content">
+                            <img class="ticket-icon mr20" width="20px" height="20px" 
+                            src="https://www.svgrepo.com/show/95753/airplane.svg"/>
+                        </div>
+                    </p-card>
                 </div>
-            </p-card>
-        </div>
-        <div class="flex justify-content mt-24">
-            <p-card class="flex  full-h back-ticket" >
-                <div class="row">
-                    <div class="col-6">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="col-6">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                </div>
-            </p-card>
-            <p-card class="flex full-h back-ticket-sm" >
-                <div class="row">
-                    <div class="col-6"><i class="pi pi-user"></i>Vuelo</div>
-                    <div class="col-6">{{flightTicket.flightroutecode}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-6"><i class="pi pi-sign-out"></i>Puerta</div>
-                    <div class="col-6">{{flightTicket.gateid}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-6"><i class="pi pi-sign-in"></i>Asiento</div>
-                    <div class="col-6">{{flightTicket.seatid}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-6"><i class="pi pi-sign-in"></i>Clase</div>
-                    <div class="col-6">A</div>
-                </div>
-                <div class="flex justify-content">
-                    <img class="ticket-icon mr20" width="20px" height="20px" 
-                    src="https://www.svgrepo.com/show/95753/airplane.svg"/>
-                </div>
-            </p-card>
-        </div>
-    </div>
-    <div>
-        <p-button label="Imprimir" (click)="printContent()"/>
-    </div>
-</ng-container>
+            </div>    
+        </ng-container>
 
-<ng-container *ngIf="!loading && !flightTicket">
-    <div class="flex justify-content mt-24">
-        <p-card>
-            No se encontró resultados
-        </p-card>
-    </div>
-</ng-container>
+        <ng-container *ngIf="!loading && !flightTicket">
+            <div class="flex justify-content mt-24">
+                <p-card>
+                    No se encontró resultados
+                </p-card>
+            </div>
+        </ng-container>
+    </p-card>
+</div>

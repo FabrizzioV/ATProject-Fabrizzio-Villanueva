@@ -1,4 +1,32 @@
-<p-card class="justify-content flex">
+<p-carousel 
+        [value]="images" 
+        [numVisible]="1" 
+        [numScroll]="1" 
+        [circular]="true" >
+            <ng-template let-images pTemplate="item">
+                <img 
+                    src="{{ images.image }}" 
+                    alt="product.name" 
+                    class="carousel-img" />
+                <div class="image-container justify-content">
+                    <p-card class="image-text">
+                        <div class="image-title h1">
+                            ¡Conoce nuestros destinos!
+                        </div>
+                        <div class="image-locale h3">
+                            {{images.name}}
+                        </div>
+                        <div class="image-description">
+                            {{images.description}}
+                        </div>
+                    </p-card>
+                </div>
+            </ng-template>
+    </p-carousel>
+<div class="h1 text-center mt-24">
+    ¡Reserva tu siguiente aventura ahora!
+</div>
+<p-card class="justify-content flex header">
     <div class="flex">
         <form [formGroup]="formGroup" class="flex">
             <p-floatLabel>
@@ -30,14 +58,17 @@
                     [required]="true"/>
                 <label for="range">Escoja el rango de fechas</label>
             </p-floatLabel>
-            <p-button label="Cotizar" (click)="getFlightRoutes()"/>
+            <p-button label="Buscar" (click)="getFlightRoutes()"/>
         </form>
     </div>
 </p-card>
-<p-card class="justify-content flex mt-24">
+<p-card class="justify-content flex mt-24" *ngIf="flightRoutes">
     <p-dataView [value]="flightRoutes">
         <ng-template pTemplate="list" let-flightRoutes>
             <div class="flightItem" *ngFor="let item of flightRoutes; let first = first">
+                <div class="flight-code mb-12 h3">
+                    <b>Vuelo: {{item.flightRouteCode}}</b>
+                </div>
                 <div class="row mb-12">
                     <div class="col-5">
                         <div class="h5">Hora de vuelo:</div>
@@ -46,10 +77,10 @@
                         </div>
                     </div>
                     <div class="col-3">
-                        <div class="">
-                            <span class="">{{ item.originName }}</span>
+                        <div class="code-div">
+                            <span class="o-text">{{ item.originName }}</span>
                             <i class="pi pi-arrow-right"> </i>
-                            <span class="">{{ item.finalName }}</span>
+                            <span class="f-text">{{ item.finalName }}</span>
                         </div>
                     </div>
                     <div class="col-4 right-text">
@@ -58,7 +89,7 @@
                 </div>
                 <div class="right-text">
                     <p-button icon="pi pi-shopping-cart" [raised]="true" 
-                    label="Escoger asiento" (click)="selectFlight(item)"/>
+                    label="Reserva ahora" (click)="selectFlight(item)"/>
                 </div>
             </div>
         </ng-template>

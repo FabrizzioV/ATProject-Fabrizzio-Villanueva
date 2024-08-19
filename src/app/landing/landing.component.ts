@@ -32,6 +32,8 @@ export class LandingComponent {
   
   formGroup!: FormGroup;
 
+  responsiveOptions!: any[];
+  images!: any[];
 
     constructor(
       private locationsService: LocationsService,
@@ -41,7 +43,43 @@ export class LandingComponent {
       private route: Router
     ) {}
 
+    message = "hola";
+
     ngOnInit() {
+      this.images=[
+        {
+          image:"https://d1bvpoagx8hqbg.cloudfront.net/originals/pucallpa-belleza-selva-792a9cbd1097b58a9784c824687bb56b.jpg",
+          name: "Pucallpa",
+          description: "La ciudad donde conectarás con la naturaleza y la selva de Lima. Ciudad de centro gastronómico y de crianza del paiche."
+        },
+        {
+          image:"https://www.peru.travel/contenido/destino/imagen/es/8/1.4/principal/lima-banner-3.jpg",
+          name: "Lima",
+          description: "La ciudad de los reyes, capital del Perú y centro de conexión con todo el país. Lleno de historia virreinal y cultura."
+        },
+        {
+          image:"https://media.cnn.com/api/v1/images/stellar/prod/230519153808-01-quito-ecuador-top.jpg?q=w_2000,c_fill",
+          name: "Quito",
+          description: "La primera ciudad declarada como Patrimonio Cultural de la humanidad, rodeada de 12 hermosos y majestuosos volcanes."
+        }
+      ]
+      this.responsiveOptions = [
+        {
+            breakpoint: '1199px',
+            numVisible: 1,
+            numScroll: 1
+        },
+        {
+            breakpoint: '991px',
+            numVisible: 1,
+            numScroll: 1
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
       this.getCountries()
       this.formGroup = new FormGroup({
         selectedOrigin: new FormControl(null, Validators.required),
@@ -118,4 +156,5 @@ export class LandingComponent {
         planeId: item.planeId,
       }});
     }
+    
 }

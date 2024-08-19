@@ -1,7 +1,48 @@
+@import ../../custom-theme.sass
 
 .flightItem
     padding: 20px 20px
     border-bottom: 1px solid #a0a0a0 
+    width: 946px
     &:last-child
         border-bottom: none
             
+.carousel-img
+    z-index: -9
+    position: absolute
+    width: max-content
+    -webkit-transform: translateY(-45%)
+
+@media (max-width:966px) 
+    .carousel-img
+        width: 100%
+
+.image-container
+    width: 100%
+    height: 360px
+    text-align: center
+    display: flex
+
+.image-title
+    color: red
+
+.image-text
+    padding: 20px
+    max-width: 740px
+    height: max-content
+    margin: auto
+    
+.image-locale
+    margin-top: 24px
+    text-align: left
+
+.image-description
+    text-align: left
+
+.image-locale, .image-description
+    padding: 0px 12px
+
+.flight-code
+    width: 100%
+    padding: 16px 0px
+    border-bottom: 2px solid red

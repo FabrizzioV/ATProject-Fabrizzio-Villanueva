@@ -17,7 +17,7 @@ export class FlightTicketService {
     return this.http.get<FlightTicket[]>(configUrl.url+"/ticket/"+id);
   }
 
-  createFlightTicket(flightTicket:Ticket, paymentMethodId: number): Observable<Ticket[]>{
-    return this.http.post<Ticket[]>(configUrl.url+"/crear-ticket/"+paymentMethodId,flightTicket);
+  createFlightTicket(flightTicket:Ticket, paymentMethodId: number): Observable<Ticket>{
+    return this.http.post<Ticket>(configUrl.url+"/crear-ticket/"+paymentMethodId,flightTicket);
   }
 }

@@ -12,6 +12,7 @@ import { PaymentMethod } from '../entities/paymentMethod';
 import { PaymentService } from '../services/payment/payment.service';
 import { UserService } from '../services/user/user.service';
 import { FlightTicketService } from '../services/flightTicket/flight-ticket.service';
+import { FlightTicket } from '../entities/flightTicket';
 
 @Component({
   selector: 'app-buying-process',
@@ -125,11 +126,15 @@ export class BuyingProcessComponent {
     this.createTicket();
   }
 
+  flightTicket!: Ticket;
+
   createTicket(){
     this.flightTicketService.createFlightTicket(this.ticket,this.selectedMethod.paymentMethodId).subscribe((res) => {
-      if(res.length>0){
-        document.getElementById('pagoBtn')?.setAttribute("disabled","true")
+      if(res){
+        this.visible=false;
+        this.flightTicket=res;
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Se ha creado su boleto' });
+        document.getElementById('pagoBtn')?.setAttribute("disabled","true")
       }
     });
   }
